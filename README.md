@@ -49,10 +49,10 @@ console.log(util.inspect(config, null, 5));
       { path: '/Users/.../dev/projects/bconfig/examples/fixtures/vendor/jquery.js',
         exports: '$' } },
   remote:
-   [ { deps: { jquery: 'jquery' },
-       exports: 'runnel',
-       key: 'runnel',
-       url: 'https://raw.github.com/thlorenz/runnel/master/index.js' } ] }
+   { runnel:
+      { deps: { jquery: 'jquery' },
+        exports: 'runnel',
+        url: 'https://raw.github.com/thlorenz/runnel/master/index.js' } } }
 ```
 
 ## Status

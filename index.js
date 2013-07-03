@@ -59,14 +59,15 @@ function extractRemotes(config) {
     , remotePaths =  config.paths.remote;
 
   return Object.keys(shim)
-    .map(function (k) {
+    .reduce(function (acc, k) {
       var conf = shim[k];
       var remotePath = remotePaths[k];
 
-      if (!remotePath) return null;
-      return xtend(conf, { key: k, url: remotePath });
-    })
-    .filter(function (x) { return !!x; });
+      if (!remotePath) return acc;
+
+      acc[k] = xtend(conf, { url: remotePath });
+      return acc;
+    }, {});
 }  
 
 /**
