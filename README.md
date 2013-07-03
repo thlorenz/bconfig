@@ -2,19 +2,84 @@
 
 Structures a requirejs config into shim and remote objects to easier interface with browserify.
 
+- returned shim object is compatible with [browserify-shim](https://github.com/thlorenz/browserify-shim)
+- returned remote is compatible with [bromote](https://github.com/thlorenz/bromote)
+
+**requirejs config:**
+
 ```js
-// TODO
+module.exports = {
+  baseUrl :  '.',
+  entry   :  'index.js', // pretend that exists
+  paths   :  {
+    jquery :  'vendor/jquery',
+
+    // let's pretend we are in the nineties and still use modules that aren't on npm
+    runnel :  'https://raw.github.com/thlorenz/runnel/master/index.js' 
+  },
+  shim: {
+    jquery: {
+      exports: '$'
+    },
+    runnel: {
+      // doesn't really depend on it, but for demonstration purposes
+      deps: { jquery: 'jquery'},
+      exports: 'runnel'
+    }
+  }
+};
+```
+
+**Conversion Script:**
+```js
+var bconfig = require('bconfig');
+var util = require('util');
+
+var config = bconfig(require.resolve('./fixtures/requirejs-config'));
+console.log(util.inspect(config, null, 5));
+```
+
+**Output:**
+
+```
+{ baseUrl: '.',
+  entry: '/Users/.../dev/projects/bconfig/examples/fixtures/index.js',
+  shim:
+   { jquery:
+      { path: '/Users/.../dev/projects/bconfig/examples/fixtures/vendor/jquery.js',
+        exports: '$' } },
+  remote:
+   [ { deps: { jquery: 'jquery' },
+       exports: 'runnel',
+       key: 'runnel',
+       url: 'https://raw.github.com/thlorenz/runnel/master/index.js' } ] }
 ```
 
 ## Status
 
-Nix, Nada, Nichevo, Nothing --> go away!
+- alpha version (fully working) -- tests pending
+- example `separate-paths-shims` pending
+
 ## Installation
 
     npm install bconfig
 
 ## API
 
+###*bconfig (configPath, keepPathsAndShimSeparate)*
+```
+/**
+ * Analyzes a requirejs config and creates local shims/paths for local files and remote shims/paths for urls found in paths.
+ * 
+ * @name exports
+ * @function
+ * @param configPath {String} Full Path to requirejs config
+ * @param keepPathsAndShimSeparate {Boolean} 
+ *       if true, only paths will be split into local and remote, 
+ *       otherwise aggregated shim and remote objects with all relevant information are returned
+ * @return {Object} a more browserify friendly version of the config
+ */
+```
 
 ## License
 
