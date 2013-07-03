@@ -1,4 +1,4 @@
-# bconfig
+# bconfig [![build status](https://secure.travis-ci.org/thlorenz/bconfig.png)](http://travis-ci.org/thlorenz/bconfig)
 
 Structures a requirejs config into shim and remote objects to easier interface with browserify.
 
