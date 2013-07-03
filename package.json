@@ -22,7 +22,7 @@
       "tape": "~1.0.4",
       "tap": "~0.4.3"
     },
-    "keywords": [] ,
+    "keywords": [ "requirejs", "amd", "browserify", "config", "adapt", "remote", "shim" ] ,
     "author" : {
       "name" : "Thorsten Lorenz",
       "email" : "thlorenz@gmx.de",
