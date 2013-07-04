@@ -55,11 +55,6 @@ console.log(util.inspect(config, null, 5));
         url: 'https://raw.github.com/thlorenz/runnel/master/index.js' } } }
 ```
 
-## Status
-
-- alpha version (fully working) -- tests pending
-- example `separate-paths-shims` pending
-
 ## Installation
 
     npm install bconfig
@@ -67,6 +62,7 @@ console.log(util.inspect(config, null, 5));
 ## API
 
 ###*bconfig (configPath, keepPathsAndShimSeparate)*
+
 ```
 /**
  * Analyzes a requirejs config and creates local shims/paths for local files and remote shims/paths for urls found in paths.
@@ -80,6 +76,8 @@ console.log(util.inspect(config, null, 5));
  * @return {Object} a more browserify friendly version of the config
  */
 ```
+
+**Note:** keeping paths and shims separate is not recommended in general, but may have its use cases
 
 ## License
 
