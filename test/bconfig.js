@@ -8,6 +8,7 @@ var bconfig =  require('..')
 var fixtures =  path.join(__dirname, 'fixtures')
   , entry    =  path.join(fixtures, 'index.js')
   , jquery   =  path.join(fixtures, 'vendor', 'jquery.js')
+  , jqueryui =  path.join(fixtures, 'vendor', 'jquery-ui.js')
 
 test('\n remote with deps and shim without deps', function (t) {
   var config = bconfig(require.resolve('./fixtures/conf-remote-with-deps-shim-no-deps'))
@@ -35,13 +36,13 @@ test('\n remote with deps and shim with deps', function (t) {
   t.deepEqual(
       config
     , { baseUrl: '.',
-        entry: '/Users/thlorenz/dev/projects/bconfig/test/fixtures/index.js',
+        entry: entry,
         shim:
         { jquery:
-            { path: '/Users/thlorenz/dev/projects/bconfig/test/fixtures/vendor/jquery.js',
+            { path: jquery,
               exports: '$' },
           jqueryui:
-            { path: '/Users/thlorenz/dev/projects/bconfig/test/fixtures/vendor/jquery-ui.js',
+            { path: jqueryui,
               exports: null,
               depends: { jquery: 'jQuery' } } },
         remote:
