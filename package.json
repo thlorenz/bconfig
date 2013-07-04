@@ -1,6 +1,6 @@
 {
   "name": "bconfig",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Structures a requirejs config into shim and remote objects to easier interface with browserify.",
   "main": "index.js",
   "scripts": {
