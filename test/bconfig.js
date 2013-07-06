@@ -70,7 +70,7 @@ test('\n remote with deps shim with none, missing entry field', function (t) {
     , { baseUrl: '.',
         shim:
         { jquery:
-            { path: '/Users/thlorenz/dev/js/projects/bconfig/test/fixtures/vendor/jquery.js',
+            { path: jquery,
               exports: '$' } },
         remote:
         { runnel:
@@ -86,7 +86,7 @@ test('\n remote with deps shim with none, missing entry field and missing base u
       config
     , { shim:
         { jquery:
-            { path: '/Users/thlorenz/dev/js/projects/bconfig/test/fixtures/vendor/jquery.js',
+            { path: jquery,
               exports: '$' } },
         remote:
         { runnel:
