@@ -62,3 +62,9 @@ test('\n shim pointing to file that does not exist', function (t) {
     t.end()  
   }
 })
+
+test('\n remote with deps shim with none, missing entry fiels', function (t) {
+  var config = bconfig(require.resolve('./fixtures/conf-missing-entry'))
+  console.error('config: ', config);
+  t.end()
+})
