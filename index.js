@@ -84,8 +84,9 @@ function extractRemotes(config) {
 module.exports  =  function (configPath, keepPathsAndShimSeparate) {
   var config    =  require(configPath);
   var configDir =  path.dirname(configPath);
-  var base      =  path.join(configDir, config.baseUrl);
-  config.entry  =  pathify(base, config, 'entry');
+  var base      =  path.join(configDir, config.baseUrl || '');
+
+  if (config.entry) config.entry = pathify(base, config, 'entry');
 
   separatePaths(base, config);
 

@@ -63,8 +63,35 @@ test('\n shim pointing to file that does not exist', function (t) {
   }
 })
 
-test('\n remote with deps shim with none, missing entry fiels', function (t) {
+test('\n remote with deps shim with none, missing entry field', function (t) {
   var config = bconfig(require.resolve('./fixtures/conf-missing-entry'))
-  console.error('config: ', config);
+  t.deepEqual(
+      config
+    , { baseUrl: '.',
+        shim:
+        { jquery:
+            { path: '/Users/thlorenz/dev/js/projects/bconfig/test/fixtures/vendor/jquery.js',
+              exports: '$' } },
+        remote:
+        { runnel:
+            { deps: { jquery: 'jQuery' },
+              exports: 'runnel',
+              url: 'https://raw.github.com/thlorenz/runnel/master/index.js' } } })
+  t.end()
+})
+
+test('\n remote with deps shim with none, missing entry field and missing base url', function (t) {
+  var config = bconfig(require.resolve('./fixtures/conf-missing-entry-and-baseurl'))
+  t.deepEqual(
+      config
+    , { shim:
+        { jquery:
+            { path: '/Users/thlorenz/dev/js/projects/bconfig/test/fixtures/vendor/jquery.js',
+              exports: '$' } },
+        remote:
+        { runnel:
+            { deps: { jquery: 'jQuery' },
+              exports: 'runnel',
+              url: 'https://raw.github.com/thlorenz/runnel/master/index.js' } } })
   t.end()
 })
